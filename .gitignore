@@ -1,5 +1,8 @@
 node_modules/
 dist/
-webpackd.config.js/
-.eslintrc.js/
-.babelrc/
+webpackd.config.js
+.eslintrc.js
+.babelrc
+package.json
+package-lock.json
+

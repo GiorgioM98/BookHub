@@ -24,14 +24,14 @@ function getBooks() {
     const spinner = document.querySelector(".spinner-grow");
     spinner.style.display = "inline-block";
 
-    const rowScroll = document.querySelector(".rowScroll");
-    rowScroll.style.display = "none";
-
     const footer = document.querySelector("footer");
     footer.style.display = "none";
 
+  
+
+
     // Fetch api with genre
-    fetch(`https://openlibrary.org/subjects/${genere}.json?details=true`)
+    fetch(`https://openlibrary.org/subjects/${genere}.json?details=true&limit=40`)
       .then(function (response) {
         if (response.status !== 200) {
           console.log(`error:${response.status}`);
@@ -44,13 +44,19 @@ function getBooks() {
           // Some info with display none/inline
           const genere = document.querySelector(".inputSearch");
           const rowScroll = document.querySelector(".rowScroll");
-          rowScroll.style.display = "inline-block";
+          // const btnLoadMore= document.querySelector(".btnLoadMore");
+          // const rowBtn= document.querySelector(".rowBtn");
           genere.value = "";
+          rowScroll.style.display = "inline-block";
+          // btnLoadMore.style.display = "inline-block";
+          // rowBtn.style.display = "block";
           spinner.style.display = "none";
 
           // Check if there are no works
           if (_.isEmpty(data.works) || data.works === undefined) {
             alert("Please enter a valid genre");
+            rowScroll.style.display = "none";
+            footer.style.display = "inline-block";
           }
         });
       })
@@ -208,3 +214,4 @@ function displayDescription(info) {
 
 
 getBooks();
+

@@ -27,9 +27,7 @@ function getBooks() {
     const footer = document.querySelector("footer");
     footer.style.display = "none";
 
-  
-
-
+    
     // Fetch api with genre
     fetch(`https://openlibrary.org/subjects/${genere}.json?details=true&limit=40`)
       .then(function (response) {
